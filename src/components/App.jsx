@@ -6,9 +6,9 @@ class App extends React.Component {
     };
   }
 
-  onTitleClick () {
+  onTitleClick (video) {
     console.log("OMG")
-    this.setState({playing: });
+    this.setState({playing: video);
   }
   //We need to grab the exampleVideoData that is associated with the element that was clicked.
 	
