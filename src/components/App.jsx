@@ -2,13 +2,14 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
     this.state = {
-      playing: exampleVideoData[0]
+      videos: exampleVideoData,
+      currentVideo: exampleVideoData[0]
     };
   }
 
   onTitleClick (video) {
     console.log("OMG")
-    this.setState({playing: video);
+    this.setState({currentVideo: video});
   }
   //We need to grab the exampleVideoData that is associated with the element that was clicked.
 	
@@ -17,10 +18,15 @@ class App extends React.Component {
       <div>
         <Nav />
         <div className="col-md-7">
-          <VideoPlayer video={}/>
+          <VideoPlayer video={this.state.currentVideo}/>
         </div>
         <div className="col-md-5">
-          <VideoList  videos={exampleVideoData} onTitleClick={this.onTitleClick}/>
+        {/*originally videos={exampleVideoData}*/}
+          <VideoList  
+          videos={this.state.videos} 
+          onTitleClick={this.onTitleClick.bind(this)}
+          />
+        }
         </div>
       </div>
     );
