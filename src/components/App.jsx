@@ -7,6 +7,23 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getYouTubeVideos('cute kittens');
+  }
+
+  getYouTubeVideos(query) {
+    const options = {
+      key: this.props.API_KEY,
+      query: query
+    }
+    this.props.searchYouTube(options, (videos) => {
+      this.setState({
+        videos: videos,
+        currentVideo: videos[0]
+      });
+    });
+  }
+
   onTitleClick (video) {
     console.log("OMG")
     this.setState({currentVideo: video});
